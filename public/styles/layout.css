@@ -21,9 +21,13 @@ body {
   font-family: "Source Sans Pro", "sans-serif";
 }
 
-.nav {
-  font-family: bungee, sans-serif;
-}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ .container {
+   position: absolute;
+   right: 5%;
+   left: 5%;
+   text-align: center;
+ }
