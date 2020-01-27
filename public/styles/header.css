@@ -5,7 +5,9 @@ header {
   right: 0;
   left: 0;
   /* margin-top: 0;   */
-  background-color: lightcoral;
+  background-color: #04001f;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 header div {
@@ -13,5 +15,5 @@ header div {
 }
 
 header h2 {
-  margin-top: 0;
+  margin: 0;
 }
