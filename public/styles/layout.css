@@ -26,6 +26,7 @@ body {
  */
 
  .container {
+   background-color: #f4f1ec;
    position: absolute;
    right: 5%;
    left: 5%;
