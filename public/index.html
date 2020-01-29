@@ -26,6 +26,9 @@
   <!-- new-tweet CSS  -->
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
+  <!-- tweets CSS -->
+  <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
@@ -45,14 +48,14 @@
   </nav>
 
   <!-- Header -->
-  <header>
+  <header class="pageHeader">
 
     <!-- <h1>I'm the header start</h1> -->
-    <div>
+    <div class="pageHeader">
       <img src="/images/profile-hex.png">
     </div>
     <br>
-    <div>
+    <div class="pageHeader">
       <h2>Your Name</h2>
     </div>
     <!-- <h1>I'm the header end</h1> -->
@@ -71,6 +74,21 @@
         </footer>
       </form>
     </section>
+
+    <article class="tweet">
+      <header>
+        <span>-face- Newton</span>
+        <span class="userName">userName</span>
+      </header>
+      <section class="tweet">
+        <p>If I have seen further it is by standing on the shoulders of giants</p>
+      </section>
+      <footer>
+        <span>10 day ago</span>
+        <span class="links">various links</span>
+      </footer>
+    </article>
+
   </main>
 </body>
 

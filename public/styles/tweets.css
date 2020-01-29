@@ -1,0 +1,49 @@
+article.tweet {
+  height: 250px;
+  margin-top: 75px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  border: solid;
+  text-align: left;
+  opacity: 0.7;
+}
+
+article.tweet:hover {
+  opacity: 1;
+}
+
+article.tweet:hover .userName{
+  display: block;
+  opacity: .50;
+}
+
+.tweet header  {
+  /* opacity: 0.5; */
+}
+
+.userName {
+  float: right;
+  display: none;
+}
+/* .tweet:hover .userName{
+  display: block;
+} */
+
+/* .tweet:hover header {
+  opacity: 1;
+} */
+
+article.tweet section {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  font-weight: bold;
+}
+
+article footer {
+  border-top: solid;
+  padding-top: 1%;
+}
+.links {
+  float: right;
+}
