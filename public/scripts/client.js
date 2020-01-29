@@ -43,11 +43,6 @@ const createTweetElement = (tweetData => {
   return `<article class="tweet"><header><span><img src="${avatars}"> ${name}</span><span class="userName">${handle}</span></header><section class="tweet"><p>${text}</p></section><footer><span>${getDate(created_at)} days ago</span><span class="links"><a href="/">Various links</a> </span></footer></article>`;
 });
 
-//const $tweet = createTweetElement(data);
-
-// Test / driver code (temporary)
-// console.log('this is the tweet:', $tweet); // to see what it looks like
-
 const renderTweets = (tweets => {
   for (const tweet of tweets) {
     $('#container').append(createTweetElement(tweet));
