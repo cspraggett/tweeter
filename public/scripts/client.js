@@ -24,13 +24,37 @@
 //   }
 // ];
 
+const validateData = (data => {
+  return data.length > 1 && data.length <= 140;
+});
+
+const sendAlert = (text => {
+  alert(text);
+});
+
+const escape = str => {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const submitWithAjax = function() {
   const $form = $('main form');
   console.log('found the button');
   $form.submit(function(event) {
     event.preventDefault();
-    console.log('Button clicked, performing ajax call...');
-    $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() });
+    console.log('this is this:', $('main form :first').val());
+    if (validateData($('main form :first').val())) {
+      console.log('Button clicked, performing ajax call...');
+      $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() })
+        .then(() => {
+          $('textarea').val('');
+          $('.counter').text(140);
+          loadtweets();
+        });
+    } else {
+      sendAlert('Input not valid!');
+    }
     // .then(renderTweets());
   });
 };
@@ -55,12 +79,13 @@ const createTweetElement = (tweetData => {
   const {text} = tweetData.content;
   const {created_at} = tweetData;
   getDate(created_at);
-  return `<article class="tweet"><header><span><img src="${avatars}"> ${name}</span><span class="userName">${handle}</span></header><section class="tweet"><p>${text}</p></section><footer><span>${getDate(created_at)} days ago</span><span class="links"><a href="/">Various links</a> </span></footer></article>`;
+  return `<article class="tweet"><header><span><img src="${escape(avatars)}"> ${escape(name)}</span><span class="userName">${escape(handle)}</span></header><section class="tweet"><p>${escape(text)}</p></section><footer><span>${getDate(created_at)} days ago</span><span class="links"><a href="/">Various links</a> </span></footer></article>`;
 });
 
 const renderTweets = (tweets => {
-  for (const tweet of tweets) {
-    $('#container').append(createTweetElement(tweet));
+  $('.display').empty();
+  for (const tweet of tweets.reverse()) {
+    $('.display').append(createTweetElement(tweet));
   }
 });
 
