@@ -24,6 +24,12 @@
 //   }
 // ];
 
+const slide = (() => {
+  $('.button').click(() => {
+    $('.pageHeader').slideToggle('slow');
+  });
+});
+
 const validateData = (data => {
   return data.length > 1 && data.length <= 140;
 });
@@ -92,6 +98,7 @@ const renderTweets = (tweets => {
 $(document).ready(() => {
   loadtweets();
   submitWithAjax();
+  slide();
 
   //renderTweets(data);
   //$('#container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
