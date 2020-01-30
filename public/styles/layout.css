@@ -34,7 +34,12 @@ body {
  }
 
  @media only screen and (min-width: 1024px) {
-  
+
+    body nav {
+      color: white;
+      background-color: #4056A1; 
+    }
+
     header.pageHeader {
     width: 33.33%;
     float: left;
