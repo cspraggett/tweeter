@@ -1,6 +1,7 @@
 // moveErrorMessage is a helper function to remove error message when the user pressess a key in the textarea.
 const moveErrorMessage = () => {
   $('main form').keydown(() => {
+    $('#error').slideUp();
     $('#error').css('visibility', 'hidden');
   });
 };
@@ -91,3 +92,4 @@ $(document).ready(() => {
   submitWithAjax();
   slide();
 });
+
