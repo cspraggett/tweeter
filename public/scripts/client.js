@@ -1,4 +1,12 @@
-const CheckForError = ((data) => {
+// moveErrorMessage is a helper function to remove error message when the user pressess a key in the textarea.
+const moveErrorMessage = () => {
+  $('main form').keydown(() => {
+    $('#error').slideUp();
+  });
+};
+
+// c
+const checkForError = ((data) => {
   console.log('in check');
   if (!validateData(data)) {
     let message = "Your entry is too long.";
@@ -6,10 +14,9 @@ const CheckForError = ((data) => {
       message = 'Your entry is too short!';
     }
     $('#error').css("visibility", "visible");
+    $('#error').slideDown();
     $('#error').text(message);
-    return false;// $('#ta').focus($('#error').slideUp());
   }
-  return true;
 });
 
 const slide = (() => {
@@ -34,20 +41,16 @@ const escape = str => {
 
 const submitWithAjax = function() {
   const $form = $('main form');
-  console.log('found the button');
   $form.submit(function(event) {
     event.preventDefault();
-    console.log('this is this:', $('main form :first').val());
-    if (CheckForError($('main form :first').val())) {
-      console.log('Button clicked, performing ajax call...');
-      $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() })
-        .then(() => {
-          $('textarea').val('');
-          $('.counter').text(140);
-          loadtweets();
-        });
-    }
-    // .then(renderTweets());
+    moveErrorMessage();
+    checkForError($('main form :first').val());
+    $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() })
+      .then(() => {
+        $('textarea').val('');
+        $('.counter').text(140);
+        loadtweets();
+      });
   });
 };
 
@@ -81,11 +84,10 @@ const renderTweets = (tweets => {
   }
 });
 
+
+
 $(document).ready(() => {
   loadtweets();
   submitWithAjax();
   slide();
-
-  //renderTweets(data);
-  //$('#container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 });
