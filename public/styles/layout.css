@@ -34,20 +34,28 @@ body {
  }
 
  @media only screen and (min-width: 1024px) {
-  header.pageHeader {
+  
+    header.pageHeader {
     width: 33.33%;
     float: left;
-    display: inline-block;
+    /* margin-top: 215px; */
+    position: relative;
+    top: 6.5em;
+
+    /* display: inline-block; */
   }
   /* .new-tweet {
     width: 66.66%;
     float: right;
   }
-
+  
   article.tweet {
     width: 66.66%;
     float: right;
   } */
+  img {
+    margin-top: 0.75em;
+  }
   main {
     width: 66%%;
     float: right;
