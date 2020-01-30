@@ -1,32 +1,20 @@
-// Test / driver code (temporary). Eventually will get this from the server.
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ];
+const CheckForError = ((data) => {
+  console.log('in check');
+  if (!validateData(data)) {
+    let message = "Your entry is too long.";
+    if (data.length < 1) {
+      message = 'Your entry is too short!';
+    }
+    $('#error').css("visibility", "visible");
+    $('#error').text(message);
+    return false;// $('#ta').focus($('#error').slideUp());
+  }
+  return true;
+});
 
 const slide = (() => {
   $('.button').click(() => {
-    $('.pageHeader').slideToggle('slow');
+    $('.new-tweet').slideToggle('slow');
   });
 });
 
@@ -50,7 +38,7 @@ const submitWithAjax = function() {
   $form.submit(function(event) {
     event.preventDefault();
     console.log('this is this:', $('main form :first').val());
-    if (validateData($('main form :first').val())) {
+    if (CheckForError($('main form :first').val())) {
       console.log('Button clicked, performing ajax call...');
       $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() })
         .then(() => {
@@ -58,8 +46,6 @@ const submitWithAjax = function() {
           $('.counter').text(140);
           loadtweets();
         });
-    } else {
-      sendAlert('Input not valid!');
     }
     // .then(renderTweets());
   });

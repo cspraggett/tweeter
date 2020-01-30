@@ -3,6 +3,7 @@ header.pageHeader {
   /* padding-top: 120px; */
   margin-top: 120px;
   height: 400px;
+  /* padding: 100px 0; */
   right: 0;
   left: 0;
   /* margin-top: 0;   */
@@ -18,3 +19,4 @@ div.pageHeader {
 h2.pageHeader {
   margin: 0;
 }
+
