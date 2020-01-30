@@ -1,11 +1,12 @@
 // moveErrorMessage is a helper function to remove error message when the user pressess a key in the textarea.
 const moveErrorMessage = () => {
   $('main form').keydown(() => {
-    $('#error').slideUp();
+    $('#error').css('visibility', 'hidden');
   });
 };
 
-// c
+// checkForError checks form input for more than 0 and less than 141 characters and displays an
+// appropriateerror message
 const checkForError = ((data) => {
   console.log('in check');
   if (!validateData(data)) {
@@ -14,9 +15,11 @@ const checkForError = ((data) => {
       message = 'Your entry is too short!';
     }
     $('#error').css("visibility", "visible");
-    $('#error').slideDown();
+    // $('#error').css('visibility', 'show');
     $('#error').text(message);
+    return false;
   }
+  return true;
 });
 
 const slide = (() => {
@@ -27,10 +30,6 @@ const slide = (() => {
 
 const validateData = (data => {
   return data.length > 1 && data.length <= 140;
-});
-
-const sendAlert = (text => {
-  alert(text);
 });
 
 const escape = str => {
@@ -44,13 +43,14 @@ const submitWithAjax = function() {
   $form.submit(function(event) {
     event.preventDefault();
     moveErrorMessage();
-    checkForError($('main form :first').val());
-    $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() })
-      .then(() => {
-        $('textarea').val('');
-        $('.counter').text(140);
-        loadtweets();
-      });
+    if (checkForError($('main form :first').val())) {
+      $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() })
+        .then(() => {
+          $('textarea').val('');
+          $('.counter').text(140);
+          loadtweets();
+        });
+    }
   });
 };
 

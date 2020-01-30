@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
 
@@ -74,7 +76,7 @@
       <!-- <h2>Compose Tweet</h2> -->
       <aside id="error">Error text goes here</aside>
       <form method="POST" action="/tweets/">
-        <textarea id="ta" name="text" type="text" placeholder="What are you humming about?"></textarea>
+        <textarea id="ta" name="text" type="text" placeholder="What are you humming about?" wrap="hard"></textarea>
         <footer>
           <input type="submit" value="Tweet">
           <span class="counter">140</span>
