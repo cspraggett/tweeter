@@ -33,6 +33,7 @@ body {
    text-align: center;
  }
 
+ /* CSS to render desktop version of page */
  @media only screen and (min-width: 1024px) {
 
     body nav {

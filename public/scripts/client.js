@@ -22,7 +22,6 @@ const slide = (() => {
 });
 
 const validateData = (data => {
-  console.log(data);
   return data.length >= 1 && data.length <= 140;
 });
 
