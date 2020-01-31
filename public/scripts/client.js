@@ -74,8 +74,11 @@ const createTweetElement = (tweetData => {
   const {name, avatars, handle} = tweetData.user;
   const {text} = tweetData.content;
   const {created_at} = tweetData;
+  const flag = `<img src='../images/flag.png'/>`;
+  const retweet = `<img src='/images/sync.png'/>`;
+  const like = `<img src='/images/like.png'/>`;
   getDate(created_at);
-  return `<article class="tweet"><header><span><img src="${escape(avatars)}"> ${escape(name)}</span><span class="userName">${escape(handle)}</span></header><section class="tweet"><p>${escape(text)}</p></section><footer><span>${getDate(created_at)} days ago</span><span class="links"><a href="/">Various links</a> </span></footer></article>`;
+  return `<article class="tweet"><header><span><img src="${escape(avatars)}"> ${escape(name)}</span><span class="userName">${escape(handle)}</span></header><section class="tweet"><p>${escape(text)}</p></section><footer><span>${getDate(created_at)} days ago</span><span class="links">${flag} ${retweet} ${like}</span></footer></article>`;
 });
 
 const renderTweets = (tweets => {

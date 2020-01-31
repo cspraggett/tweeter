@@ -9,6 +9,10 @@ article.tweet {
   opacity: 0.7;
 }
 
+article.tweet:hover .links {
+  opacity: .50;
+}
+
 article.tweet:hover {
   opacity: 1;
 }
@@ -32,4 +36,6 @@ article footer {
 }
 .links {
   float: right;
+  opacity: 0;
+  bottom: 10%;
 }
