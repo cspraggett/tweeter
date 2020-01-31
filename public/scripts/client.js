@@ -1,28 +1,20 @@
-// moveErrorMessage is a helper function to remove error message when the user pressess a key in the textarea.
-const moveErrorMessage = () => {
-  $('main form').keydown(() => {
-    $('#error').slideUp();
-    $('#error').css('visibility', 'hidden');
-  });
-};
-
 // checkForError checks form input for more than 0 and less than 141 characters and displays an
 // appropriateerror message
 const checkForError = ((data) => {
-  console.log('in check');
   if (!validateData(data)) {
     let message = "Your entry is too long.";
     if (data.length < 1) {
       message = 'Your entry is too short!';
     }
     $('#error').css("visibility", "visible");
-    // $('#error').css('visibility', 'show');
+    $('#error').slideDown();
     $('#error').text(message);
     return false;
   }
   return true;
 });
 
+// slide pushes the new-tweets section up and down when the new tweets button is pushed.
 const slide = (() => {
   $('.button').click(() => {
     $('.new-tweet').slideToggle('slow');
@@ -30,39 +22,45 @@ const slide = (() => {
 });
 
 const validateData = (data => {
-  return data.length > 1 && data.length <= 140;
+  console.log(data);
+  return data.length >= 1 && data.length <= 140;
 });
 
+// escape cleans user input text to avoid XXS attacks.
 const escape = str => {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
+// submitWithAjax reads the input from the new-tweet form and then checks if the data is valid
+// wit checkForError and then uses ajax to POST the new tweet into the database.
+// it then calls loadTweets to load the new tweet onto the page.
 const submitWithAjax = function() {
   const $form = $('main form');
   $form.submit(function(event) {
     event.preventDefault();
-    moveErrorMessage();
     if (checkForError($('main form :first').val())) {
       $.ajax('/tweets/', {method: 'POST', data: $(this).serialize() })
         .then(() => {
+          $('#error').slideUp();
           $('textarea').val('');
           $('.counter').text(140);
-          loadtweets();
+          loadTweets();
         });
     }
   });
 };
 
-const loadtweets = function() {
-  console.log('Loading tweets');
+// loadTweets GETS tweets from the DB and then call renderTweets.
+const loadTweets = function() {
   $.ajax({url: '/tweets', method: 'GET', dataType: 'JSON'})
     .then(response => {
       renderTweets(response);
     });
 };
 
+// getDate sends the difference between the current date and the date submitted.
 const getDate = ((date) => {
   const today = new Date();
   const postDate = new Date(date);
@@ -70,6 +68,7 @@ const getDate = ((date) => {
   return Math.floor(diff);
 });
 
+// createTweetElement takes in the data from the database and parses it into HTML.
 const createTweetElement = (tweetData => {
   const {name, avatars, handle} = tweetData.user;
   const {text} = tweetData.content;
@@ -81,6 +80,7 @@ const createTweetElement = (tweetData => {
   return `<article class="tweet"><header><span><img src="${escape(avatars)}"> ${escape(name)}</span><span class="userName">${escape(handle)}</span></header><section class="tweet"><p>${escape(text)}</p></section><footer><span>${getDate(created_at)} days ago</span><span class="links">${flag} ${retweet} ${like}</span></footer></article>`;
 });
 
+// render Tweets inserts the tweets in HTML to the main app page.
 const renderTweets = (tweets => {
   $('.display').empty();
   for (const tweet of tweets.reverse()) {
@@ -91,7 +91,7 @@ const renderTweets = (tweets => {
 
 
 $(document).ready(() => {
-  loadtweets();
+  loadTweets();
   submitWithAjax();
   slide();
 });
