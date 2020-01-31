@@ -7,7 +7,7 @@ const checkForError = ((data) => {
       message = 'Your entry is too short!';
     }
     $('#error').css('visibility', 'visible');
-    $('#error').slideDown();
+    // $('#error').slideDown();
     $('#error').text(message);
     return false;
   }
@@ -40,7 +40,7 @@ const submitWithAjax = function () {
     if (checkForError($('main form :first').val())) {
       $.ajax('/tweets/', { method: 'POST', data: $(this).serialize() })
         .then(() => {
-          $('#error').slideUp();
+          // $('#error').slideUp();
           $('#error').css('visibility', 'hidden');
           $('textarea').val('');
           $('.counter').text(140);
