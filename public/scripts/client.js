@@ -41,6 +41,7 @@ const submitWithAjax = function () {
       $.ajax('/tweets/', { method: 'POST', data: $(this).serialize() })
         .then(() => {
           $('#error').slideUp();
+          $('#error').css('visibility', 'hidden');
           $('textarea').val('');
           $('.counter').text(140);
           loadTweets();
