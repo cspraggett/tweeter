@@ -1,6 +1,4 @@
 .new-tweet {
-  /* right: 5%;
-  left: 5%; */
   text-align: left;
   padding-top: 2.5em;
   display: none;
@@ -18,11 +16,7 @@
   text-align: center;
   visibility: hidden;
 }
-  /* .new-tweet form {
-    width: 90%;
-    display: inline-block;
-  } */
-
+  
 .new-tweet textarea {
   width: 100%;
   left: 5%;
@@ -56,4 +50,6 @@
 
 .below {
   color: red;
+  display: inline;
 }
+

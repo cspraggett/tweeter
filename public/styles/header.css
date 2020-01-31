@@ -1,13 +1,8 @@
 header.pageHeader {
-  /* position: relative; */
-  /* position: absolute; */
-  /* padding-top: 120px; */
   margin-top: 120px;
   height: 370px;
-  /* padding: 100px 0; */
   right: 0;
   left: 0;
-  /* margin-top: 0;   */
   background-color: #04001f;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
