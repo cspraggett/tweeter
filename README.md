@@ -17,6 +17,6 @@ Tweeter is a simple, single-page Twitter clone. It was built with HTML, CSS, AJA
 
 ## Screenshots
 
-!["Screenshot of Desktop version"] (https://github.com/cspraggett/tweeter/blob/master/docs/Desktop1.png)
-!["Screenshot of Desktop version"] (https://github.com/cspraggett/tweeter/blob/master/docs/Desktop2.png)
-!["Screenshot of Mobile version"] (https://github.com/cspraggett/tweeter/blob/master/docs/Mobile.png)
+!["Screenshot of Desktop version"](https://github.com/cspraggett/tweeter/blob/master/docs/Desktop1.png)
+!["Screenshot of Desktop version"](https://github.com/cspraggett/tweeter/blob/master/docs/Desktop2.png)
+!["Screenshot of Mobile version"](https://github.com/cspraggett/tweeter/blob/master/docs/Mobile.png)
